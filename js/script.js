@@ -13,122 +13,45 @@
 5) Добавить нумерацию выведенных фильмов */
 
 'use strict';
-/*
-const reklama=document.getElementsByClassName('promo__adv'),
-    genre=document.getElementsByClassName('promo__genre'),
-    mainFilmBg=document.getElementsByClassName('promo__bg'),
-    listFilm=document.querySelector('.promo__interactive-list');
 
-reklama[0].remove();
-genre[0].textContent='Драма';
-mainFilmBg[0].style.backgroundImage='url("img/bg.jpg")';
+const btns=document.querySelectorAll('button'),
+      wrapper=document.querySelector('.btn-block');
 
-listFilm.innerHTML='';
-*/
+//console.log(btns[0].classList.length);
 
-document.addEventListener('DOMContentLoaded', ()=>{
+//console.log(btns[0].classList.item(1));
+//console.log(btns[1].classList.add('red'));
+//console.log(btns[0].classList.remove('blue'));
+//console.log(btns[0].classList.toggle('blue'));
 
-    const movieDB = {
-        movies: [
-            "Логан",
-            "Лига справедливости",
-            "Ла-ла лэнд",
-            "Одержимость",
-            "Скотт Пилигрим против..."
-        ]
-    };
-
-    const adv=document.querySelectorAll('.promo__adv img'),
-        poster = document.querySelector('.promo__bg'),
-        genre = poster.querySelector('.promo__genre'),
-        movieList = document.querySelector('.promo__interactive-list'),
-        
-        addForm=document.querySelector('form.add'),
-        addInput=addForm.querySelector('.adding__input'),
-        checkbox=addForm.querySelector('[type="checkbox"]'); 
-
-    addForm.addEventListener('submit', (event)=> {
-        //отслеживаем отправку нашей формы - событие submit
-        event.preventDefault();//отменили стандартное поведение - перезагрузку стриницы
-
-        let newFilm=addInput.value;
-        const favorite=checkbox.checked;
-//проверяем, не пустая ли строка
-        if(newFilm){
-
-            if(newFilm.length>21){
-                newFilm=`${newFilm.substring(0,22)}...`;
-            }
-
-            if(favorite){
-
-            }
-            
-            movieDB.movies.push(newFilm);
-            sortArr(movieDB.movies);
-
-            createMovieList(movieDB.movies, movieList);
-        }
-
-        event.target.reset();
-
-    });
-
-    const deleteAdv=(arr)=>{
-        arr.forEach(item=>{
-        item.remove();
-    }); 
-    };
-
-    
-
-    
-    const makeChanges=()=>{
-        genre.textContent='драма';
-        poster.style.backgroundImage='url("img/bg.jpg")';
-
-    };
-
-    
-
-    movieList.innerHTML="";
-
-    const sortArr=(arr)=>{
-        arr.sort();
-    };
-
-    
-
-    movieDB.movies.forEach((item,i)=>{
-        movieList.innerHTML+=`<li class="promo__interactive-item">${i+1}. ${item}
-        <div class="delete"></div>
-        </li>`;
-    });
-    
-    movieDB.movies.sort();
-    
-    function createMovieList(films, parent){
-        parent.innerHTML="";
-        sortArr(films); 
-        films.forEach((item,i)=>{
-            parent.innerHTML+=`<li class="promo__interactive-item">${i+1}. ${item}
-            <div class="delete"></div>
-            </li>`;
-        });
-
-        document.querySelectorAll('.delete').forEach((btn,i)=>{
-            btn.addEventListener('click', ()=>{
-                btn.parentElement.remove();
-                movieDB.movies.splice(i, 1);
-
-                createMovieList(films, parent);
-            });
-        });
-    }
-
-    deleteAdv(adv);
-    makeChanges();
-    
-    createMovieList(movieDB.movies, movieList);
-
+//f (btns[1].classList.contains('red')){
+//   console.log('red');
+//
+btns[0].addEventListener('click',()=>{
+    //if(!btns[1].classList.contains('red')){
+        //btns[1].classList.add('red');
+    //}else{
+        //btns[1].classList.remove('red');
+    //}
+    btns[1].classList.toggle('red');//но это не всегда работает, иногда надо через if
 });
+
+//console.log(btns[0].className);
+wrapper.addEventListener('click', (event)=>{
+ //console.dir(event.target);
+ if(event.target && event.target.tagName=="BUTTON"){
+     console.log('Hello');
+ }
+});
+
+
+//
+//btns.forEach(btn=>{
+//    btn.addEventListener('click',()=>{
+//        console.log('Hello');
+//    });
+//});
+//
+const btn=document.createElement('button');
+btn.classList.add('red');
+wrapper.append(btn);
