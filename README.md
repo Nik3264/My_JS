@@ -1,0 +1,3 @@
+# my_js
+This repository was created in order to practice the JavaScript language. It uses different JavaScript functions and methods ...
+
